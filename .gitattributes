@@ -1,0 +1,17 @@
+# Normalize line endings
+* text=auto
+
+# KiCad project files: strip noisy timestamp updates
+*.kicad_pro filter=kicad_project
+
+# Treat KiCad design files as text for diffing
+*.kicad_sch diff
+*.kicad_pcb diff
+*.kicad_sym diff
+*.kicad_mod diff
+
+# Binary files
+*.step binary
+*.stp binary
+*.wrl binary
+*.pdf binary

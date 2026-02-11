@@ -1,0 +1,33 @@
+# KiCad backup and autosave files
+*.bak
+*.bck
+*~
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups/
+*-save.pro
+*-save.kicad_pcb
+
+# Local user preferences (noisy diffs on every session)
+*.kicad_prl
+fp-info-cache
+
+# Lock files (machine-specific)
+*.lck
+
+# Generated netlist and autorouter files
+*.net
+*.dsn
+*.ses
+
+# ERC/DRC reports (regenerable)
+*.erc
+*.drc
+
+# Fabrication outputs (generate from tagged commits, don't track)
+output/
+
+# OS files
+.DS_Store
+Thumbs.db
