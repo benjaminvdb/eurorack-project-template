@@ -41,7 +41,14 @@ errata/            Known issues per board revision
 - ADRs are numbered sequentially: `0001-topic.md`, `0002-topic.md`, ...
 - ADR status values: Proposed | Accepted | Superseded by ADR-NNNN
 - CHANGELOG follows Keep a Changelog format (https://keepachangelog.com/)
-- Commit messages follow Conventional Commits: `feat(hw):`, `fix(pcb):`, `docs:`
+- Cod1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7'mmit messages follow Conventional Commits: `feat(hw):`, `fix(pcb):`, `docs:`
+
+### Datasheets
+- Stored in `datasheets/`
+- Named `<PartNumber>-<short-description>.pdf` (e.g. `SSI2131-vco-ic.pdf`)
+- Part number first (matches BOM/schematic), lowercase description after
+- Use hyphens as separators, no spaces or underscores
+- One PDF per component (or component family if a single datasheet covers variants)
 
 ### KiCad
 - All libraries are project-local under `hardware/lib/`
