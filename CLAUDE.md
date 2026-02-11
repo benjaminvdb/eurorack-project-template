@@ -37,11 +37,23 @@ errata/            Known issues per board revision
 ## Conventions
 
 ### Documentation
-- ADRs use the Nygard format: Context, Decision, Alternatives, Consequences
-- ADRs are numbered sequentially: `0001-topic.md`, `0002-topic.md`, ...
-- ADR status values: Proposed | Accepted | Superseded by ADR-NNNN
-- CHANGELOG follows Keep a Changelog format (https://keepachangelog.com/)
-- Cod1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7'mmit messages follow Conventional Commits: `feat(hw):`, `fix(pcb):`, `docs:`
+- ADRs use Nygard format: Context, Decision, Alternatives, Consequences
+- ADRs numbered: `0001-topic.md`, `0002-topic.md`, ...
+- ADR status: Proposed | Accepted | Superseded by ADR-NNNN
+- Inline ADR references: `(see ADR-NNNN)` or `See ADR-NNNN`
+- Reference sections use: `[Title](URL) -- Description` (double-dash separator)
+- CHANGELOG follows Keep a Changelog format
+- Commits follow Conventional Commits: `feat(hw):`, `fix(pcb):`, `docs:`
+
+### Units and Notation
+- Current: `uA`, `mA` (ASCII `u` for micro, per ISO 2955)
+- Resistance: `k` for kilo-ohm, `ohm` spelled out below 1k (e.g. `49.9k`, `267 ohm`)
+- Capacitance: `nF`, `uF` (not `µF` in source files)
+- Frequency: `Hz`, `kHz`, `MHz`
+- Voltage: `V`, `mV` (e.g. `+5V`, `-12V`, `2.5V`)
+- Temperature coefficient: `ppm/C`
+- Approximate values: `~` prefix (e.g. `~50 Hz to ~60 kHz`)
+- Equations in code blocks: spaces around operators (e.g. `I = 1V / 49.9k = 20 uA`)
 
 ### Datasheets
 - Stored in `datasheets/`
