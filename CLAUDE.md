@@ -18,7 +18,9 @@ hardware/lib/      Project-local symbols, footprints, 3D models
 panel/             Front panel (separate KiCad PCB project)
 docs/              All documentation
 docs/adr/          Architecture Decision Records
+docs/context/      Generated schematic context for Claude Code (gitignored)
 datasheets/        Local copies of component datasheets
+scripts/           CLI tools (export-context.py, etc.)
 simulation/        SPICE simulation files
 firmware/          Embedded code (if applicable)
 errata/            Known issues per board revision
@@ -84,10 +86,40 @@ errata/            Known issues per board revision
 
 ## Working with Claude Code
 
+### Schematic context for Claude Code
+
+KiCad files (`.kicad_sch`, `.kicad_pcb`) are s-expression files that Claude
+should not edit directly, but their content can be exported into LLM-friendly
+formats. Run the export script after making changes in KiCad:
+
+```
+python scripts/export-context.py                              # auto-finds schematic
+python scripts/export-context.py hardware/my-module.kicad_sch # explicit path
+```
+
+This generates files in `docs/context/` (gitignored, regenerable):
+
+| File | Format | Use |
+|------|--------|-----|
+| `*-summary.txt` | Text | Compact overview -- read this first (lowest token cost) |
+| `*-bom.csv` | CSV | Full component list with values, footprints, MPN |
+| `*-netlist.spice` | SPICE | Component connectivity in compact text |
+| `*-netlist.xml` | XML | Detailed connectivity with component properties |
+| `*-schematic.pdf` | PDF | Visual schematic -- use Read tool to view |
+| `*-schematic.svg` | SVG | Visual schematic -- use Read tool to view |
+| `*-erc.json` | JSON | ERC violations and warnings |
+
+**Reading order for Claude Code:**
+1. `*-summary.txt` for a quick overview (BOM + SPICE netlist combined)
+2. `*-schematic.pdf` for the visual schematic layout
+3. `*-netlist.xml` when you need full net-to-pin detail
+4. `*-erc.json` to check for design rule issues
+
 ### Before making design changes
 1. Read the relevant ADRs in `docs/adr/` for prior decisions
 2. Check `docs/design-notes.md` for analog rationale
 3. Review `docs/project-brief.md` for requirements
+4. Read `docs/context/*-summary.txt` for current schematic state
 
 ### When creating a new ADR
 - Use the template in `docs/adr/0000-adr-template.md`

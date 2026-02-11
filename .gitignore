@@ -28,6 +28,9 @@ fp-info-cache
 # Fabrication outputs (generate from tagged commits, don't track)
 output/
 
+# Generated context for Claude Code (regenerable via scripts/export-context.py)
+docs/context/
+
 # OS files
 .DS_Store
 Thumbs.db
